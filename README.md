@@ -13,7 +13,7 @@
       "units": []//String[]
     },
     {
-      //第二个root（可选）
+      //second root（optional）
     }
   ]
 }
