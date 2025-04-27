@@ -2,6 +2,22 @@
 ## [中文](README_CN.md)
 ## Because V8 changed the way Planet Tech is displayed, this mod helps bring the core database back to V7
 ### How to use it?
+- `adc.json`
+```json
+{
+  "root": [
+    {
+      "planet":"",//String
+      "items": [],//String[]
+      "liquids": [],//String[]
+      "units": []//String[]
+    },
+    {
+      //第二个root（可选）
+    }
+  ]
+}
+```
 - If you are a js (json) mod, simply add a file named `adc.json` to your mod folder, at the same level as `mod.json`
 - If you are a Java mod, you need to add a file named `adc.json` under the `assets` folder
 ### How to write adc.json?
