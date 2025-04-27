@@ -1,0 +1,10 @@
+{
+  "root": [
+    {
+      "planet":"erekir",
+      "items": ["copper","lead"],
+      "liquids": ["oil"],
+      "units": ["dagger"]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+displayName: 自适应核心数据库（Adaptive Core Database）
+name:"AdaptiveCoreDatabase"
+author: guiY
+main: "ACD.ACD"
+description: "为模组作者提供一个还原V7星球放置规则的可能，使用方法请参考README.md\n\nProvide a possibility for mod authors to restore the placement rules of V7 planet. Please refer to README.md for instructions on how to use it"
+version: beta0.1
+java: true
+minGameVersion: 148
+hidden: true
