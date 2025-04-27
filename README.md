@@ -1,5 +1,5 @@
 # Adaptive Core Database lib
-## [README_CN.md]中文
+## [中文](README_CN.md)
 ## Because V8 changed the way Planet Tech is displayed, this mod helps bring the core database back to V7
 ### How to use it?
 - If you are a js (json) mod, simply add a file named `adc.json` to your mod folder, at the same level as `mod.json`
