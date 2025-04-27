@@ -2,6 +2,22 @@
 ## [English](README.md)
 ## 因为V8改了星球科技显示，这个模组可以帮助你将核心数据库重回V7
 ### 如何使用？
+- `adc.json`的基本格式如下
+```json
+{
+  "root": [
+    {
+      "planet":"",//想要添加东西的星球，字符串类型String
+      "items": [],//添加的物品，字符串数组String[]
+      "liquids": [],//添加的液体，字符串数组String[]
+      "units": []//添加的单位，字符串数组String[]
+    },
+    {
+      //第二个root（可选）
+    }
+  ]
+}
+```
 - 如果你是js（json）模组，直接在模组文件夹里添加一份名为`adc.json`的文件，和`mod.json`同级
 - 如果你是Java模组，那么你需要在`assets`文件夹下添加名为`adc.json`的文件
 ### 如何写adc.json?
