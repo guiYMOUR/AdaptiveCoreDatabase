@@ -53,42 +53,48 @@ public class ADCMain {
                         Log.err("Planet " + root.planet + " is null.");
                         continue;
                     }
-                    if(root.items.length > 0) {
-                        for (String s : root.items) {
-                            Item item = Vars.content.item(s);
-                            if (item == null) {
-                                Log.err("Item " + s + " is null.");
-                                continue;
+                    if(root.items != null) {
+                        if (root.items.length > 0) {
+                            for (String s : root.items) {
+                                Item item = Vars.content.item(s);
+                                if (item == null) {
+                                    Log.err("Item " + s + " is null.");
+                                    continue;
+                                }
+                                item.shownPlanets.add(planet);
+                                item.postInit();
+                                load = true;
                             }
-                            item.shownPlanets.add(planet);
-                            item.postInit();
-                            load = true;
                         }
-                    }
-                    if(root.liquids.length > 0) {
-                        for (String s : root.liquids) {
-                            Liquid liquid = Vars.content.liquid(s);
-                            if (liquid == null) {
-                                Log.err("liquid " + s + " is null.");
-                                continue;
+                    } else Log.info("mod " + name + " adc.json has no items");
+                    if(root.liquids != null) {
+                        if (root.liquids.length > 0) {
+                            for (String s : root.liquids) {
+                                Liquid liquid = Vars.content.liquid(s);
+                                if (liquid == null) {
+                                    Log.err("liquid " + s + " is null.");
+                                    continue;
+                                }
+                                liquid.shownPlanets.add(planet);
+                                liquid.postInit();
+                                load = true;
                             }
-                            liquid.shownPlanets.add(planet);
-                            liquid.postInit();
-                            load = true;
                         }
-                    }
-                    if(root.units.length > 0) {
-                        for (String s : root.units) {
-                            UnitType unit = Vars.content.unit(s);
-                            if (unit == null) {
-                                Log.err("Unit " + s + " is null.");
-                                continue;
+                    } else Log.info("mod " + name + " adc.json has no liquids");
+                    if(root.units != null) {
+                        if (root.units.length > 0) {
+                            for (String s : root.units) {
+                                UnitType unit = Vars.content.unit(s);
+                                if (unit == null) {
+                                    Log.err("Unit " + s + " is null.");
+                                    continue;
+                                }
+                                unit.shownPlanets.add(planet);
+                                unit.postInit();
+                                load = true;
                             }
-                            unit.shownPlanets.add(planet);
-                            unit.postInit();
-                            load = true;
                         }
-                    }
+                    } else Log.info("mod " + name + " adc.json has no units");
                 }
             }
         }
