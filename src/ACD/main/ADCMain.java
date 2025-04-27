@@ -100,8 +100,9 @@ public class ADCMain {
         }
         if(!load) return;
         Log.info("last progress...");
+        Seq<Planet> expSun = Vars.content.planets().copy().removeAll(p -> p == Planets.sun);
         for(Block b : Vars.content.blocks()){
-            if(b.requirements.length == 0) b.shownPlanets.addAll(Vars.content.planets().copy().removeAll(p -> p == Planets.sun));
+            if(b.requirements.length == 0) b.shownPlanets.addAll(expSun);
             else b.shownPlanets.clear();
             b.postInit();
         }
