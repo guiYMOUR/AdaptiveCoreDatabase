@@ -1,25 +1,26 @@
 # Adaptive Core Database lib
-## [中文](README_CN.md)
-## Because V8 changed the way Planet Tech is displayed, this mod helps bring the core database back to V7
+## [中文版本](README_CN.md)
+### This is a preload library
+- It helps mod authors adjust the item and building placement rules for their planets, assisting modders in using the V7 mindset to create V8 planets.
 ### How to use it?
-- `adc.json`
+- If you are a js (json) mod, simply add a file named `adc.json` to your mod folder, at the same level as `mod.json`.
+- If you are a Java mod, you need to add a file named `adc.json` under the `assets` folder.
+- Here's the translation of the adc.json template:
 ```json
 {
   "root": [
     {
-      "planet":"",//String
-      "items": [],//String[]
-      "liquids": [],//String[]
-      "units": []//String[]
-    },
+      "planet":"",//String type  "aaa"
+      "items": [],//String array  ["aaa","bbb",...]
+      "liquids": [],//String array  ["aaa","bbb",...]
+      "units": []//String array  ["aaa","bbb",...]
+    },//If you don't need a second root, please delete it according to the JSON format. Refer to "How to write adc.json"
     {
-      //second root（optional）
+      //Second root (optional based on requirements)
     }
   ]
 }
 ```
-- If you are a js (json) mod, simply add a file named `adc.json` to your mod folder, at the same level as `mod.json`
-- If you are a Java mod, you need to add a file named `adc.json` under the `assets` folder
 ### How to write adc.json?
 - Here is an example that adds copper, lead, oil and dagger to Erekir, and moves buildings that only use copper and lead as construction materials to Erekir:
 ```json
@@ -39,19 +40,20 @@
 ```js
 const myItem = new Item("item1");
 ```
-- Then the name of this item is `item1`, and you need to prepend your mod's name to it. Assuming your mod is named `modName`, the full name of this item becomes `modName-item1`.
-- For json files, the file name is the item's name. For example, `item2.json` corresponds to an item named `item2`. Similarly, you need to prepend your mod's name. So, if this item is part of your mod `modName`, its full name is `modName-item2`.
+- The item's name is `item1`, and you do not need to prepend the mod name.
+- However, if your item shares the same name as a vanilla item, for example, your item is also named `copper`, then you need to prepend your mod's name to distinguish it. Assuming your mod is named `modName`, the full name of this item becomes `modName-copper`.
+- For json files, the file name is the item's name. For example, `item2.json` corresponds to an item named `item2`. If the item's name duplicates a vanilla item, please refer to the previous rule.
 - The same applies to planets. Here's an example of what `adc.json` might look like for a mod: if your planet is named `planet1`, your item is named `item1`, your liquid is named `liquid1`, your unit is named `unit1`, and your mod is named `mod1`:
 ```json
 {
   "root": [
     {
-      "planet":"mod1-planet1",
+      "planet":"planet1",
       // If any of these are not applicable, you can omit them, i.e., use empty arrays []
-      // For multiple entries, separate them with commas, like ["mod1-item1","mod1-item2"]
-      "items": ["mod1-item1"],
-      "liquids": ["mod1-liquid1"],
-      "units": ["mod1-unit1"]
+      // For multiple entries, separate them with commas, like ["item1","item2"]
+      "items": ["item1"],
+      "liquids": ["liquid1"],
+      "units": ["unit1"]
     }
   ]
 }

@@ -48,52 +48,67 @@ public class ADCMain {
                         Log.err("where is you planet?");
                         continue;
                     }
-                    Planet planet = Vars.content.planet(root.planet);
+                    Planet planetO = Vars.content.planet(root.planet);
+                    Planet planetM = Vars.content.planet(name + "-" + root.planet);
+                    Planet planet = planetO != null ? planetO : planetM;
                     if(planet == null) {
-                        Log.err("Planet " + root.planet + " is null.");
+                        Log.err("can not find planet '" + name + "-" + root.planet + "' or '" + root.planet + "'");
                         continue;
                     }
                     if(root.items != null) {
+                        int i = 0;
                         if (root.items.length > 0) {
                             for (String s : root.items) {
-                                Item item = Vars.content.item(s);
+                                Item itemO = Vars.content.item(s);
+                                Item itemM = Vars.content.item(name + "-" + s);
+                                Item item = itemO != null ? itemO : itemM;
                                 if (item == null) {
-                                    Log.err("Item " + s + " is null.");
+                                    Log.err("can not find item '" + name + "-" + s + "' or '" + s + "'");
                                     continue;
                                 }
+                                i++;
                                 item.shownPlanets.add(planet);
                                 item.postInit();
                                 load = true;
                             }
                         }
+                        Log.info("mod " + name + " adds " + i + " items to " + planet.localizedName);
                     } else Log.info("mod " + name + " adc.json has no items");
                     if(root.liquids != null) {
+                        int i = 0;
                         if (root.liquids.length > 0) {
                             for (String s : root.liquids) {
-                                Liquid liquid = Vars.content.liquid(s);
+                                Liquid liquidO = Vars.content.liquid(s);
+                                Liquid liquidM = Vars.content.liquid(name + "-" + s);
+                                Liquid liquid = liquidO != null ? liquidO : liquidM;
                                 if (liquid == null) {
-                                    Log.err("liquid " + s + " is null.");
+                                    Log.err("can not find liquid '" + name + "-" + s + "' or '" + s + "'");
                                     continue;
                                 }
+                                i++;
                                 liquid.shownPlanets.add(planet);
                                 liquid.postInit();
-                                load = true;
                             }
                         }
+                        Log.info("mod " + name + " adds " + i + " liquids to " + planet.localizedName);
                     } else Log.info("mod " + name + " adc.json has no liquids");
                     if(root.units != null) {
+                        int i = 0;
                         if (root.units.length > 0) {
                             for (String s : root.units) {
-                                UnitType unit = Vars.content.unit(s);
+                                UnitType unitO = Vars.content.unit(s);
+                                UnitType unitM = Vars.content.unit(name + "-" + s);
+                                UnitType unit = unitO != null ? unitO : unitM;
                                 if (unit == null) {
-                                    Log.err("Unit " + s + " is null.");
+                                    Log.err("can not find unit '" + name + "-" + s + "' or '" + s + "'");
                                     continue;
                                 }
+                                i++;
                                 unit.shownPlanets.add(planet);
                                 unit.postInit();
-                                load = true;
                             }
                         }
+                        Log.info("mod " + name + " adds " + i + " units to " + planet.localizedName);
                     } else Log.info("mod " + name + " adc.json has no units");
                 }
             }
